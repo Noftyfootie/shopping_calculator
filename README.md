@@ -26,7 +26,7 @@ Perfect for quick market budgeting, grocery planning, or small business receipts
 ## Demo
 
 Live version:  
-🔗 [https://yourusername.github.io/shopping-calculator/](https://yourusername.github.io/shopping-calculator/)
+🔗 [Live Demo](https://Noftyfootie.github.io/shopping-calculator/)
 
 ## Screenshots
 
