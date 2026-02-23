@@ -1,0 +1,547 @@
+/* Reset & Global*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color, #ffffff);
+  color: var(--text-color, #000000);
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  min-height: 100vh;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+/* Theme variables */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --input-bg: #f9f9f9;
+  --input-border: #ccc;
+  --input-text: #000;
+  --table-border: #ddd;
+  --total-color: #333;
+  --bg-total: #007bff;
+  --bg-sumup: #333;
+  --sumup-color: #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --input-bg: #1e1e1e;
+  --input-border: #444;
+  --input-text: #ffffff;
+  --table-border: #333;
+  --total-color: #bbb;
+  --bg-total: #1e40af;
+  --bg-sumup: #444;
+  --sumup-color: #ffffff;
+}
+
+/* Theme toggle button – top right corner */
+#theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
+  border-radius: 50%;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s ease;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+#theme-icon {
+  font-size: 1.4rem;
+}
+
+/* Main container */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Navigation */
+.shopnav {
+  text-align: center;
+  padding: 1.5rem 0 1rem;
+}
+
+.shop {
+  font-size: clamp(1.8rem, 6vw, 2.8rem);
+  font-weight: 600;
+  color: white;
+  background: #0a0a69;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 3rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.shop i {
+  font-size: 1.4em;
+}
+
+.happy {
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
+  color: var(--text-color);
+  margin-top: 0.8rem;
+  opacity: 0.9;
+}
+
+/* Subcontainer and table wrapper */
+.subcontainer {
+  padding: 1rem 0;
+}
+
+.tablecontainer {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  overflow-x: auto;
+}
+
+/* Table header */
+.items th {
+  background: #0a0a69;
+  color: white;
+  padding: 0.5rem;
+  font-weight: 400;
+  font-size: 1.1rem;
+  text-align: center;
+  border-bottom: 4px solid #2563eb;
+}
+
+/* Table body */
+.inputbody {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 0.8rem;
+}
+
+.inputbody td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.5rem 0.6rem;
+}
+
+/* Inputs – aligned under headers */
+.inputbody input {
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  display: block;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--input-border);
+  border-radius: 12px;
+  background: var(--input-bg);
+  color: var(--input-text);
+  text-align: center;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  box-sizing: border-box;
+  border: 2px solid rgb(10, 10, 105);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  border-radius: 10px;
+}
+
+.inputbody input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  outline: none;
+}
+
+/*TOTAL+ sumup*/
+.button {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.total,
+.sumup {
+  padding: 0.9rem 1.8rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  border: 2px solid #0a0a69;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 140px;
+  text-align: center;
+  height: 50px;
+}
+
+.total {
+  background: var(--bg-total);
+  color: white;
+}
+
+.sumup {
+  background: var(--bg-sumup);
+  color: var(--sumup-color);
+}
+
+.total:hover,
+.sumup:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/*Responsiveness*/
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 0.8rem;
+  }
+  .shopnav {
+    padding: 1rem 0;
+  }
+  .shop {
+    padding: 0.7rem 1.4rem;
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+  .happy {
+    font-size: 1.15rem;
+    margin-top: 0.6rem;
+  }
+  .tablecontainer {
+    margin: 1rem auto;
+  }
+  .inputbody td {
+    padding: 0.4rem 0.5rem;
+  }
+  .inputbody input {
+    max-width: 100%;
+    padding: 0.65rem 0.9rem;
+  }
+  .button {
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .total,
+  .sumup {
+    width: 100%;
+    max-width: 300px;
+  }
+  #theme-toggle {
+    width: 2.8rem;
+    height: 2.8rem;
+    top: 0.8rem;
+    right: 0.8rem;
+  }
+  #theme-icon {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .subcontainer {
+    padding: 1.5rem 0;
+  }
+  .tablecontainer {
+    max-width: 800px;
+  }
+  .inputbody input {
+    max-width: 300px;
+    padding: 0.85rem 1.2rem;
+  }
+  .items th {
+    padding: 1.2rem 1.5rem;
+    font-size: 1.3rem;
+  }
+  .button {
+    justify-content: center;
+  }
+}
+
+/* Modal overlay */
+#btn-summary {
+  padding: 0.8rem 1.2rem;
+  background: #0a0a69;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 120px;
+  justify-content: center;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  transition: background-color 0.3s ease;
+}
+
+/* In dark mode*/
+[data-theme="dark"] .modal {
+  background-color: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+/* Modal content box */
+.modal-content {
+  background-color: var(--bg-color, #fefefe);
+  color: var(--text-color);
+  margin: 10% auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 650px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* faint glow or border  */
+[data-theme="dark"] .modal-content {
+  box-shadow: 0 0px 30px rgba(79, 70, 229, 0.3);
+  border: 1px solid #4b5563;
+  background-color: #111827;
+}
+
+/* Modal content box */
+.modal-content {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 10% auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 650px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  color: #aaa;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close:hover {
+  color: var(--text-color);
+}
+
+/* Title and date */
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+#modal-date {
+  text-align: center;
+  color: #777;
+  margin-bottom: 1.5rem;
+}
+
+/* Summary table */
+#modal-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+#modal-body th,
+#modal-body td {
+  border: 1px solid var(--table-border);
+  padding: 0.75rem;
+  text-align: left;
+}
+
+#modal-body th {
+  background-color: rgb(10, 10, 105);
+  color: whitesmoke;
+}
+
+/* Total display */
+.modal-total {
+  text-align: right;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+/* Action buttons */
+.modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.modal-actions button {
+  padding: 0.8rem 1.6rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 120px;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+#btn-print-modal {
+  background-color: #3b82f6;
+  color: white;
+}
+
+#btn-save-modal {
+  background-color: #0a0a69;
+  color: white;
+}
+
+#btn-close-modal {
+  background-color: #6b7280;
+  color: white;
+}
+
+.modal-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Background blur when modal open */
+body.modal-open .container,
+body.modal-open #theme-toggle {
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .modal-content {
+    margin: 5% auto;
+    padding: 1rem;
+  }
+  .modal-actions {
+    flex-direction: column;
+  }
+  .modal-actions button {
+    width: 100%;
+  }
+}
+
+/* Currency selector button */
+#currency-selector {
+  padding: 0.8rem 1.2rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 120px;
+  justify-content: center;
+}
+
+#currency-selector:hover {
+  background: #2269b5;
+}
+
+/* Dropdown menu */
+.currency-dropdown {
+  display: none;
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  min-width: 200px;
+  margin-top: 5px;
+}
+
+.currency-dropdown button {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.currency-dropdown button:hover {
+  background: #f3f4f6;
+}
+
+/* Show dropdown when active */
+.currency-dropdown.active {
+  display: block;
+}
+
+/* Dark mode support for currency dropdown */
+[data-theme="dark"] .currency-dropdown {
+  background: #1f2937;
+  border-color: #374151;
+  color: #f3f4f6;
+}
+
+/* Force white text on all buttons dark mode */
+[data-theme="dark"] .currency-dropdown button,
+[data-theme="dark"] .currency-dropdown button:hover {
+  color: white !important;
+  background: transparent;
+}
+
+/* Optional: subtle hover effect in dark mode */
+[data-theme="dark"] .currency-dropdown button:hover {
+  background: #374151;
+}
+
+/* chevron icon is visible in dark mode */
+[data-theme="dark"] #currency-selector i {
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .currency-dropdown button:hover {
+  background: #374151;
+}

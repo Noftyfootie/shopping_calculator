@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping_Calculator</title>
+    <link rel="icon" href="image/cart.png" type="image/png" />
+    <link rel="styleSheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <button id="theme-toggle" aria-label="Toggle dark/light mode">
+      <i id="theme-icon" class="fa-solid fa-toggle-on"></i>
+    </button>
+    <div class="container">
+      <nav class="shopnav">
+        <h1 class="shop">
+          Shopping-Calculator <i class="fa-solid fa-cart-plus"></i>
+        </h1>
+        <p class="happy">Happy shopping</p>
+      </nav>
+      <main class="subcontainer">
+        <table class="tablecontainer">
+          <thead class="items">
+            <tr>
+              <th>ITEMS</th>
+              <th>PRICES</th>
+            </tr>
+          </thead>
+          <tbody class="inputbody">
+            <tr>
+              <td>
+                <input type="text" name="item[]" />
+              </td>
+              <td><input type="number" class="mynumber" name="price[]" /></td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" name="item[]" />
+              </td>
+              <td><input type="number" class="mynumber" name="price[]" /></td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" name="item[]" />
+              </td>
+              <td><input type="number" class="mynumber" name="price[]" /></td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" name="item[]" />
+              </td>
+              <td><input type="number" class="mynumber" name="price[]" /></td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" name="item[]" />
+              </td>
+              <td><input type="number" class="mynumber" name="price[]" /></td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" name="item[]" />
+              </td>
+              <td><input type="number" class="mynumber" name="price[]" /></td>
+            </tr>
+            <tr>
+              <td>
+                <input type="text" name="item[]" />
+              </td>
+              <td><input type="number" class="mynumber" name="price[]" /></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="button">
+          <button class="total">TOTAL <span>=</span></button>
+          <button class="sumup"></button>
+          <button id="btn-summary">Summary</button>
+          <!-- NEW: Currency selector button -->
+          <button id="currency-selector">
+            <span id="current-currency">₦</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+        </div>
+        <!-- Hidden list of currencies (dropdown) -->
+        <div id="currency-dropdown" class="currency-dropdown">
+          <button data-symbol="₦" data-locale="en-NG">₦ NGN (Nigeria)</button>
+          <button data-symbol="$" data-locale="en-US">$ USD (US Dollar)</button>
+          <button data-symbol="€" data-locale="de-DE">€ EUR (Euro)</button>
+          <button data-symbol="£" data-locale="en-GB">£ GBP (Pound)</button>
+          <button data-symbol="¥" data-locale="ja-JP">¥ JPY (Yen)</button>
+          <button data-symbol="₹" data-locale="en-IN">₹ INR (Rupee)</button>
+        </div>
+      </main>
+    </div>
+    <!-- Modal (hidden popup) -->
+    <div id="summary-modal" class="modal">
+      <div class="modal-content">
+        <span id="close-modal" class="close">&times;</span>
+        <h2>Shopping Summary</h2>
+        <p id="modal-date"></p>
+        <div id="modal-body">
+          <!-- Dynamic table -->
+        </div>
+        <div class="modal-total">
+          <strong>Total:</strong> <span id="modal-total-value"></span>
+        </div>
+        <div class="modal-actions">
+          <button id="btn-print-modal">Print</button>
+          <button id="btn-save-modal">Save to Phone</button>
+          <button id="btn-close-modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
